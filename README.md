@@ -22,7 +22,13 @@ sudo -u postgres psql
 ```
 We can quit postgres by using ```\q```.
 
+# Create new database.
+Create new database from ubuntu prompt ```$ sudo -u postgres createdb <name-of-new-database>```.
 
+## Access database
+Access a database using ```psql <databaseName>```.
+
+# Create
 ```
 CREATE TABLE flights (
     id SERIAL PRIMARY KEY,
