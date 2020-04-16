@@ -100,4 +100,48 @@ SELECT * FROM flights ORDER BY duration ASC;
 SELECT * FROM flights ORDER BY duration ASC LIMIT 3;
 ```
 
+## Group By and multiple SELECt parameters HAVING clause
+```
+SELECT origin, COUNT(*) FROM flights GROUP BY origin;
+SELECT origin, COUNT(*) FROM flights GROUP BY origin HAVING COUNT(*) > 1;
+```
+
+## Foreign keys usage in sql
+```
+CREATE TABLE passengers(
+  id SERIAL PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  flight_id INTEGER REFERENCES flights
+  )
+```
+
+## Joins
+Joins are useful if we have to deal with multiple tables.
+### inner JOIN
+Inner join tabulates the matching values of the two tables
+```
+SELECT origin, destination, name FROM flights JOIN passengers ON passengers.flight_id = flights.id;
+
+SELECT name, origin, destination FROM flights JOIN passengers ON passengers.flight_id = flights.id WHERE origin = 'New York';
+```
+### LEFT JOIN
+left join shows the matching rows + remaining rows of the left table.
+```
+SELECT origin, destination, name FROM flights LEFT JOIN passengers ON passengers.flight_id = flights.id;
+```
+## Complex SQO queries
+```
+SELECT * FROM flights WHERE id IN (SELECT flight_id FROM passengers GROUP BY flight_id HAVING COUNT(*) > 1);
+```
+## How to get help in postgresql
+```\h``` - General help
+
+```\h INSERT``` - help on INSERT ommand
 ## Services for hosting sql databases <https://www.adminer.org/> (https://adminer.cs50.net/).
+
+## Race conditions and SQL transactions
+Help in avoiding running multiple transactions at the same time.
+### Begin and commit commands
+
+# SQL alchemy library
+SQL alchemy library helps in connecting python and SQL to develp web applications. 
