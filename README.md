@@ -78,7 +78,7 @@ SELECT COUNT(*) FROM flights;
 SELECT AVG(duration) FROM flights WHERE origin = 'New York';
 ```
 
-## UPDATE entries in tables of a SQL databaseName
+## UPDATE entries in tables of a SQL database
 ```
 UPDATE flights SET duration = 430 WHERE origin = 'New York' AND destination = 'London';
 UPDATE flights SET duration = duration + 15 WHERE origin = 'New York' AND destination = 'London';
@@ -99,3 +99,5 @@ SELECT * FROM flights LIMIT 2;
 SELECT * FROM flights ORDER BY duration ASC;
 SELECT * FROM flights ORDER BY duration ASC LIMIT 3;
 ```
+
+## Services for hosting sql databases <https://www.adminer.org/> (https://adminer.cs50.net/).
